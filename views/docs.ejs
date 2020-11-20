@@ -14,7 +14,9 @@
         <h2 style="color: white">Word Documents</h2>
         <form>
             <% if(files.length) { for(var file of files) { %>)
-                <a to="<%= files.id %>"><%=file.name%></a>
+                <form action="/<%= file.id%>">
+                    <input class="docButton" type="submit" value=<%= file.name%> />
+                </form>
             <%}}%>
         </form>
     </div>
@@ -24,6 +26,5 @@
             <iframe src="<%= filePath %>"></iframe>
         <%}%>
     </div>
-   
 </body>
 </html> 
