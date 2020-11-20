@@ -15,8 +15,10 @@ const Oauth2Client = new google.auth.OAuth2(
     OauthData.web.redirect_uris[0]
 );
 
-const SCOPES = 'https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/docs https://www.googleapis.com/auth/userinfo.profile';
-var authed = false;
+const SCOPES = 'https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/userinfo.profile';
+var authed = false; 
+var code;
+
 var name, picture, files, filePath;
 
 app.get('/', (req, res) => {
@@ -62,6 +64,13 @@ app.get('/', (req, res) => {
     }  
 })
 
+app.get('/logout', (req, res) => {
+    console.log('logout', req.query.code);
+    Oauth2Client.revokeCredentials();
+    authed = false;
+    res.redirect('/');
+})
+
 app.get('/:doc', (req, res) => {
     var oauth2 = google.oauth2({
         auth: Oauth2Client,
@@ -91,7 +100,8 @@ app.get('/:doc', (req, res) => {
 })
 
 app.get('/google/callback', (req, res) => {
-    const code = req.query.code
+    code = req.query.code
+    console.log('login', code);
     if(code) {
         Oauth2Client.getToken(code, (err, tokens) => {
             if(err) {
