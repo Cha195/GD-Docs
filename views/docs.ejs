@@ -6,12 +6,17 @@
 </head>
 <body>
     <div class="topnav">
-        <h1 sstyle="align-items: center">GD-Doc</h1>
-        <img src="<%= picture %>">
-        <a href="/logout">Logout</a>
+        <div class="title">
+            <img style="width: 10%;" src='./gd-doc.png'>
+            <h1>GD-Docs</h1>
+        </div>
+        <div class="title">
+            <img style="width: 20%; border-radius: 50%" src="<%= picture %>">
+            <a href="/logout">Logout</a>
+        </div>
     </div>
     <div class="sidenav">
-        <h2 style="color: white">Word Documents</h2>
+        <h2 style="padding-left: 1.5em; color: white">Word Documents</h2>
         <form>
             <% if(files.length) { for(var file of files) { %>)
                 <form action="/<%= file.id%>">
@@ -20,7 +25,6 @@
             <%}}%>
         </form>
     </div>
-
     <div id="main" class="main">
         <% if(success) {%>
             <iframe src="<%= filePath %>"></iframe>
