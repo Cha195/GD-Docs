@@ -1,7 +1,6 @@
 body {
     font-family: "Lato", sans-serif;
     margin: 0;
-    height: 100vh;
 }
   
 .topnav {
@@ -13,26 +12,29 @@ body {
     margin: 0;
     overflow: hidden;
     background-color: #333;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
+
+.topnav h1 {
+    color:white";
 }
   
-.topnav a {
-    height: 100%;
-    top: 100%;
-    color: #f2f2f2;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-  
-.topnav a:hover {
-    background-color: #ddd;
-    color: black;
-}
-  
-.topnav a.active {
-    background-color: #4CAF50;
-    size: 70px;
+a:link, a:visited {
+    background-color: #f44336;
     color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 15px;
+    margin-left: 15px; 
+    border-radius: 30px;
+}
+  
+a:hover, a:active {
+    background-color: red;
 }
 
 img {
@@ -42,33 +44,53 @@ img {
 }
 
 .sidenav {
-    height: 100%;
-    width: 200px;
+    height: 100vh - 70px;
+    width: 306px;
     position: fixed;
     z-index: 1;
     left: 0;
     background-color: #111;
     overflow-x: hidden;
     padding-top: 20px;
+    padding-bottom: 20px;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
 }
   
-.sidenav a {
-    padding: 6px 6px 6px 32px;
+button {
     text-decoration: none;
-    font-size: 25px;
+    border: none;
+    padding: 3px 6px;
+    font-size: 15px;
     color: #818181;
-    display: block;
+    background: none;
+    width: 290px; 
+    height: 60px;
+    cursor: pointer;
 }
   
-.sidenav a:hover {
+button:hover {
     color: #f1f1f1;
+    background: #818181;
 }
   
 .main {
-    margin-left: 200px; /* Same as the width of the sidenav */
+    margin-left: 306px; /* Same as the width of the sidenav */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
   
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+}
+
+iframe {
+    width:100%;
+    height:100vh;
+    max-height: 100vh;
+    overflow-y: scroll
 }
